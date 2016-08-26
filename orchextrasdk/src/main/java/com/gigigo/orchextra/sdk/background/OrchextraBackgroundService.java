@@ -44,9 +44,9 @@ public class OrchextraBackgroundService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		orchextraLogger.log("Service method :: onStartCommand");
-//		boolean requestConfig = shouldRequestConfig(intent);
+		boolean requestConfig = shouldRequestConfig(intent);
 		if (orchextraStatusAccessor.isStarted()){
-			startBackgroundTasks(true);
+			startBackgroundTasks(requestConfig);
 			return START_STICKY;
 		}
 		return START_NOT_STICKY;
