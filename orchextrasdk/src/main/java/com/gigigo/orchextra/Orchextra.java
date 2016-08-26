@@ -17,6 +17,8 @@
  */
 package com.gigigo.orchextra;
 
+import android.app.Application;
+
 import com.gigigo.orchextra.domain.abstractions.actions.CustomOrchextraSchemeReceiver;
 import com.gigigo.orchextra.domain.abstractions.initialization.OrchextraManagerCompletionCallback;
 import com.gigigo.orchextra.sdk.OrchextraManager;
@@ -34,7 +36,6 @@ public final class Orchextra {
      * It the FIRST Orchextra method you MUST call.
      */
     public static void initialize(final OrchextraBuilder orchextraBuilder) {
-
         final OrchextraCompletionCallback orchextraCompletionCallback = orchextraBuilder.getOrchextraCompletionCallback();
         OrchextraManagerCompletionCallback orchextraManagerCompletionCallback = new OrchextraManagerCompletionCallback() {
             @Override
@@ -135,5 +136,11 @@ public final class Orchextra {
         OrchextraManager.openScannerView();
     }
 
+    public static void setGcmSendId(Application application, String gcmSendId) {
+        OrchextraManager.setGcmSendId(application, gcmSendId);
+    }
 
+    public static void setGcmSenderId(Application application, String gcmSenderId) {
+        OrchextraManager.setGcmSendId(application, gcmSenderId);
+    }
 }
