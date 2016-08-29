@@ -415,14 +415,16 @@ public class OrchextraManager {
     }
 
     private static void saveCredentials(String apiKey, String apiSecret) {
-        if (!TextUtils.isEmpty(apiKey) && !TextUtils.isEmpty(apiSecret)) {
+        if (OrchextraManager.instance != null && !TextUtils.isEmpty(apiKey) && !TextUtils.isEmpty(apiSecret)) {
             OrchextraManager.instance.orchextraStatusAccessor.saveCredentials(apiKey, apiSecret);
         }
     }
 
     public static void setGcmSendId(Application application, String gcmSenderId) {
-        OrchextraManager.instance.gcmSenderId = gcmSenderId;
-        enabledOrchextraNotificationPush(application, gcmSenderId);
+        if (OrchextraManager.instance != null) {
+            OrchextraManager.instance.gcmSenderId = gcmSenderId;
+            enabledOrchextraNotificationPush(application, gcmSenderId);
+        }
     }
 
     /**
