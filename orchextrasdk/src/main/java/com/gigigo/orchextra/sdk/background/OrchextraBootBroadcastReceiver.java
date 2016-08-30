@@ -21,9 +21,10 @@ package com.gigigo.orchextra.sdk.background;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+
 import com.gigigo.orchextra.domain.abstractions.initialization.OrchextraStatusAccessor;
 import com.gigigo.orchextra.sdk.OrchextraManager;
+
 import orchextra.javax.inject.Inject;
 
 public class OrchextraBootBroadcastReceiver extends BroadcastReceiver {
@@ -40,7 +41,7 @@ public class OrchextraBootBroadcastReceiver extends BroadcastReceiver {
 
       initDependencies();
 
-      if (orchextraStatusAccessor.isStarted()){
+      if (orchextraStatusAccessor != null && orchextraStatusAccessor.isStarted()){
         String action = intent.getAction();
         initTasksForBoot(context, action);
         initTasksForConnection(context, action);
